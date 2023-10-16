@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsToMany(models.tbl_order_masters,{
+        through:models.tbl_order_service_mappings,
+        as:"service"
+      })
     }
   }
   tbl_service_masters.init(

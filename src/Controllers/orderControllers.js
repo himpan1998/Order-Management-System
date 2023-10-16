@@ -2,6 +2,7 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 const db = require("../models/index");
 const orders = db.tbl_order_masters;
+const Services= db.tbl_service_masters;
 
 /**
  * @author Himanshu Pandey
@@ -12,10 +13,14 @@ const getAllOrders = async (req, res) => {
   try {
     const getOrders = await orders.findAll({
         attributes:['id','totalFee',['createdAt','datetime']],
-       
-        
-        
+        include:[{
+          model:Services,
+          as:'order',
+          attributes:['id','name']
+        }]   
     });
+
+    console.log("getOrders:",getOrders);
     if (getOrders.length>0) {
        return res.status(200).json({
         message: "Get All Order Lists",
