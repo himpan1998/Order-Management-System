@@ -7,29 +7,29 @@ const serviceControllers = require("../Controllers/serviceControllers");
  * GET API:
  */
 
-router.get("/all-order", orderControllers.getAllOrders);
-router.get("/order-by-id", orderControllers.getOrdersById);
-router.get("/all-service", serviceControllers.getAllServices);
-router.get("/service-by-id", serviceControllers.getAllServices);
+router.get("/order", orderControllers.getAllOrders);
+router.get("/order/:id", orderControllers.getOrdersById);
+router.get("/service", serviceControllers.getAllServices);
+router.get("/service/:id", serviceControllers.getAllServices);
 
 /**
  *  POST API:
  */
-router.post("/all-order", orderControllers.createOrders);
-router.post("/all-order", serviceControllers.createService);
+router.post("/order", orderControllers.createOrders);
+router.post("/service", serviceControllers.createService);
 
 /**
  * PUT API:
  */
 
-router.put("/update-orders", orderControllers.updateOrders);
-router.put("/update-services", serviceControllers.updateService);
+router.put("/orders/:id", orderControllers.updateOrders);
+router.put("/services/:id", serviceControllers.updateService);
 
 /**
  * DELETE API:
  */
 
-router.delete("/delete-order", orderControllers.deleteOrderById);
-router.delete("/delete-services", serviceControllers.deleteServiceById);
+router.delete("/order/:id", orderControllers.deleteOrderById);
+router.delete("/services/:id", serviceControllers.deleteServiceById);
 
 module.exports=router;

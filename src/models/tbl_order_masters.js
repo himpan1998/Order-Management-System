@@ -12,10 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsToMany(models.tbl_service_masters,{
         through:models.tbl_order_service_mappings,
-        as:"order"
+        as:"services",
+        foreignKey:'orderId',
+        otherKey:'serviceId'
       })
     }
-  }
+  }  
   tbl_order_masters.init({
     id:{
       type: DataTypes.INTEGER,
