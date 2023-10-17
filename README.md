@@ -1,5 +1,6 @@
-# Task:Order-Manangement-System 
 # Submitted By: Himanshu Pandey.
+# Email: himanshupandey2016@gmail.com.
+# Task:Order-Manangement-System 
 # Date: 2023-10-17
 
 # Description
@@ -70,12 +71,12 @@ Below are the HTTP Methods,API endpoints with short description:
 - Brief instructions on how to setup the environment to run your project:
 
 # Step:1 
- -Run 'npm install' or npm i 
- (Install all the dependencies.)
+ - Run 'npm install' or npm i 
+ - To Install all the dependencies.
 # Step:2
 - Create '.env' file and set 'db_username' and 'db_password'.
 
- (In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.)
+ - In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.
 
 # Step : 3 
 - Run 'npm run start'
@@ -85,12 +86,13 @@ Below are the HTTP Methods,API endpoints with short description:
 - Used Sequelize ORM: To improve database security by avoiding the possibility of
   SQL Injection Attacks.
 
-# Thunder Client Collection For API TESTING:
-- Import 'thunder-collection_order-management.json' file 
+# Thunder Client Collection:
+  # For API TESTING:
+  - I have used Thunder Client as API Testing  Tool in Development Enviroment.
+  - Thunder Client is a extension avaliable in VsCode Editor for API Testing.
+  - Import 'thunder-collection_order-management.json' file 
+  - (which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses.
 
-(which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses
-Run 'npm run test' to run the test cases
-What parts of the spec were completed, how much time you spent, and any particular problems you ran into
-
-I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
+# how much time you spent:
+- I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
 
