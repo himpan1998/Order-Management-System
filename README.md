@@ -1,33 +1,34 @@
 # Submitted By: Himanshu Pandey.
 # Email: himanshupandey2016@gmail.com.
-# Task:Order-Manangement-System 
+# Task: Order-Manangement-System 
 # Date: 2023-10-17
 
-# Description
+# Description:
 Our database contains three main entities such as: 
 - tbl_order_masters: This table has mainly contains field 'totalFee'.
 - tbl_service_masters: This table has mainly contains field 'name'.
 - tbl_order_service_mappings: This table has  mainly contains filed 'orderId' & 'serviceId'.
 
 - We have perform following operations on orders and services such as:
- - GetAll
- - GetById
- - Create
- - Update
- - Delete.
+- GetAll
+- GetById
+- Create
+- Update
+- Delete.
 
-- I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. Have used Relational Database:MySQL as a database to manage the data of orders and services.
+- I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. 
+- Have used Relational Database:MySQL as a database to manage the data of orders and services.
 
 # Language Used:
-  - JavaScript.
+- JavaScript.
 # FromeWork Used:
-   - Express.js.
+- Express.js.
 # DataBase Used:
-  - MySQL 
+- MySQL 
 # ORM Used:
-  - Sequelize.
+- Sequelize.
 # Schema Validator Used:
-  - Ajv JSON schema validator.
+- Ajv JSON schema validator.
 
 #  HTTP METHODS With API End-Point :
 Below are the HTTP Methods,API endpoints with short description:
@@ -51,7 +52,7 @@ Below are the HTTP Methods,API endpoints with short description:
 - DELETE: /service/:id   - To delere service by id
 
 
-# What trade-offs you made
+# What trade-offs you made:
 - As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more managable with it.
 
 # Any assumptions you made that affected your solution:
@@ -71,12 +72,12 @@ Below are the HTTP Methods,API endpoints with short description:
 - Brief instructions on how to setup the environment to run your project:
 
 # Step:1 
- - Run 'npm install' or npm i 
- - To Install all the dependencies.
+- Run 'npm install' or npm i 
+- To Install all the dependencies.
 # Step:2
 - Create '.env' file and set 'db_username' and 'db_password'.
 
- - In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.
+- In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.
 
 # Step : 3 
 - Run 'npm run start'
@@ -87,12 +88,12 @@ Below are the HTTP Methods,API endpoints with short description:
   SQL Injection Attacks.
 
 # Thunder Client Collection:
-  # For API TESTING:
-  - I have used Thunder Client as API Testing  Tool in Development Enviroment.
-  - Thunder Client is a extension avaliable in VsCode Editor for API Testing.
-  - Import 'thunder-collection_order-management.json' file 
-  - (which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses.
+-  I have used Thunder Client as API Testing  Tool in Development Enviroment.
+- Thunder Client is a extension avaliable in VsCode Editor for API Testing.
+# For API TESTING:
+- Import 'thunder-collection_order-management.json' file 
+- (which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses.
 
-# how much time you spent:
+# Time Spent To Complete The Task:
 - I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
 
