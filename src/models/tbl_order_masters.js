@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsToMany(models.tbl_service_masters,{
         through:models.tbl_order_service_mappings,
         as:"services",
-        foreignKey:'orderId',
-        otherKey:'serviceId'
+        foreignKey:"orderId",
+        otherKey:"serviceId"
       })
     }
   }  

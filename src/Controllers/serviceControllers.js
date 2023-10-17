@@ -40,7 +40,6 @@ const getAllServices = async (req, res) => {
  */
 const getServicesById = async (req, res) => {
   try {
-    console.log("id:", req.params.id);
     const serviceId = req.params.id;
     const isServiceExist = await services.findOne({
       attributes: ["id", "name"],
@@ -48,7 +47,6 @@ const getServicesById = async (req, res) => {
         id: serviceId,
       },
     });
-    console.log("SERVICe", isServiceExist);
     if (!isServiceExist) {
       return res.status(400).json({
         message: "No service records found !!",
@@ -83,7 +81,7 @@ const createService = async (req, res) => {
         message: validate.error,
       });
     }
-    const createService = await orders.create(insertData);
+    const createService = await services.create(insertData);
     return res.status(200).json({
       message: "Service Created Successfully !!",
       result: createService,
@@ -148,14 +146,14 @@ const updateService = async (req, res) => {
  */
 const deleteServiceById = async (req, res) => {
   try {
-    const serviceId = req.params.id;
+    // const serviceId = req.params.id;
     const removeService = await services.destory({
       where: {
-        id: serviceId,
+        id: req.params.id,
       },
     });
     res.status(200).json({
-      message: "Records deleted Sucessfully !!",
+      message:"Records deleted Sucessfully !!",
       result: removeService,
     });
   } catch (error) {

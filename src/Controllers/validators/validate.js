@@ -1,18 +1,17 @@
 const orderSchema = {
   type: "object",
   properties: {
-    id: { type: "integer" },
     totalFee: { type: "integer" },
   },
+  required:['totalFee'],
   additionalProperties: false,
 };
 const serviceSchema = {
   type: "object",
   properties: {
-    id: { type: "integer" },
     name: { type: "string" },
   },
-//   required:[],
+  required:['name'],
   additionalProperties: false,
 };
 

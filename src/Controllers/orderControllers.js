@@ -60,8 +60,9 @@ const getOrdersById = async (req, res) => {
         {
           model: services,
           through: { attributes: []},
-          // as: "services", 
-          attributes: ["id"] },
+          as: "services", 
+          attributes: ["id"] 
+        },
       ],
     });
     if (isOrderExist) {
@@ -74,7 +75,7 @@ const getOrdersById = async (req, res) => {
       message: "No order Found !!",
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server Error !!",
       error: console.log(error),
     });

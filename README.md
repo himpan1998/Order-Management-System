@@ -1,54 +1,63 @@
-# Submission By:Himanshu Pandey.
+# Submitted By: Himanshu Pandey.
 # Task: Order-Manangement-System 
 
 # Description
-There are 3 main entities. Table: tbl_order_masters,Table: tbl_service_masters and tbl_order_service_mappings.
-The table tbl_order_masters has field 'totalFee'.The table tbl_service_masters has field 'name'.
-and The table tbl_order_service_mappings has filed 'orderId','serviceId'.
-You can do following operations on services and orders: Create, Update, GetAll, GetById and Delete.
+There are 3 main entities/tables. 
+1.tbl_order_masters,
+2.tbl_service_masters & 
+3.tbl_order_service_mappings.
 
-I have used nodeJs with expressJs framework to create APIs. Have used MySQL as a database to manage the data of orders and services.
+- The table tbl_order_masters has field 'totalFee'.
+- The table tbl_service_masters has field 'name'.
+and 
+- The table tbl_order_service_mappings has filed 'orderId','serviceId'.
+
+- we have perform following operations on services and orders: Create, Update, GetAll, GetById and Delete.
+
+I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. Have used Relational Database:MySQL as a database to manage the data of orders and services.
 
 # Language Used:
-  - javaScript
+  - javaScript.
 # FromeWork Used:
-   - Express.js
+   - Express.js.
 # DataBase Used:
-  - MySQL (RDBMS)
+  - MySQL (R.D.B.M.S).
 # ORM Used:
-  - Sequelize
+  - Sequelize.
 # Schema Validator Used:
-  - ajv 
+  - Ajv Validator.
 
 # API End-Points:
-Below are the endpoints with short description
-POST: /service - To create new service
+Below are the HTTP Methods,API endpoints with short description:
 
-PUT: /service/:serviceId - To update service
+# GET:
+- GET: /order            - To get all orders
+- GET: /order/:Id        - To get order by Id
+- GET: /service          - To get all services
+- GET: /service/:Id      - To get service by Id
 
-GET: /service - To get all services
+# POST:
+- POST: /service         - To create new service
+- POST: /order           - To create new order
 
-GET: /service/:serviceId - To get service by Id
+# PUT:
+- PUT: /service/:Id      - To update service
+- PUT: /order/:Id        - To update order (You will not able to update the order   which is created less than 3 hours ago)
 
-DELETE: /service/:serviceId - To delere service by id
+# DELETE:
+- DELETE: /order/:id     - To delere order by id
+- DELETE: /service/:id   - To delere service by id
 
-POST: /order - To create new order
-
-PUT: /order/:orderId - To update order (You will not able to update the order which is created less than 3 hours ago)
-
-GET: /order - To get all orders
-
-GET: /order/:orderId - To get order by Id
-
-DELETE: /order/:orderId - To delere order by id
 
 # What trade-offs you made
 As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more managable with it.
 
 # Any assumptions you made that affected your solution:
-When you delete any service, all the order attached with that service will also be deleted
-What you would change if you built this for production
+- When you delete any service, all the order attached with that service will also be deleted.
+- I have used Ajv validators for Schema Validation thus when client sent request from
+  req.body or whatever the datatype should be same as mentoined in schema validator otherwise it show validation error. i.e datatype sent by client should be same as schema Validator.
 
+What you would change if you built this for production
 # Made Chnages for Production: 
 For production, I need to encrypt sensitive data such as DB configurations.
 I also need to change env configurations. I will create separate env files for different environments.
@@ -69,3 +78,7 @@ Run 'npm run test' to run the test cases
 What parts of the spec were completed, how much time you spent, and any particular problems you ran into
 
 I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
+
+# Security Measures:
+- <Used Sequelize ORM/>: To improve database security by avoiding the possibility of
+  SQL Injection Attacks.

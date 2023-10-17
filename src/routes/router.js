@@ -22,14 +22,14 @@ router.post("/service", serviceControllers.createService);
  * PUT API:
  */
 
-router.put("/orders/:id", orderControllers.updateOrders);
-router.put("/services/:id", serviceControllers.updateService);
+router.put("/order/:id", orderControllers.updateOrders);
+router.put("/service/:id", serviceControllers.updateService);
 
 /**
  * DELETE API:
  */
 
 router.delete("/order/:id", orderControllers.deleteOrderById);
-router.delete("/services/:id", serviceControllers.deleteServiceById);
+router.delete("/service/:id", serviceControllers.deleteServiceById);
 
 module.exports=router;
