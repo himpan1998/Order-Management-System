@@ -2,19 +2,19 @@
 # Task: Order-Manangement-System 
 
 # Description
-There are 3 main entities/tables. 
-1.tbl_order_masters,
-2.tbl_service_masters & 
-3.tbl_order_service_mappings.
+Our database contais three main entities or tables as follows: 
+- tbl_order_masters: This table has mainly contains field 'totalFee'.
+- tbl_service_masters: This table has mainly contains field 'name'.
+- tbl_order_service_mappings: This table has  mainly contains filed 'orderId' & 'serviceId'.
 
-- The table tbl_order_masters has field 'totalFee'.
-- The table tbl_service_masters has field 'name'.
-and 
-- The table tbl_order_service_mappings has filed 'orderId','serviceId'.
+- We have perform following operations on orders and services such as:
+ - GetAll
+ - GetById
+ - Create
+ - Update
+ - Delete.
 
-- we have perform following operations on services and orders: Create, Update, GetAll, GetById and Delete.
-
-I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. Have used Relational Database:MySQL as a database to manage the data of orders and services.
+- I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. Have used Relational Database:MySQL as a database to manage the data of orders and services.
 
 # Language Used:
   - javaScript.
@@ -57,28 +57,37 @@ As a database I have chosen relational database(MySQL) as the order and service 
 - I have used Ajv validators for Schema Validation thus when client sent request from
   req.body or whatever the datatype should be same as mentoined in schema validator otherwise it show validation error. i.e datatype sent by client should be same as schema Validator.
 
-What you would change if you built this for production
-# Made Chnages for Production: 
-For production, I need to encrypt sensitive data such as DB configurations.
-I also need to change env configurations. I will create separate env files for different environments.
-I need to manage serviceId of orders in more detail. Currently I have considered simpler way
-I need use separate test DB for test cases. Initially in this implementation I have used the same database
-I need to apply pagination in getAll query, Also I can apply search order and services by keword.
+# Made Chanages for Production: 
+- For production,need to encrypt sensitive data such as database configurations more precisely,encrypt 'config.json' file & stored it into '.env'file.
+- I also need to create separate env files  configration for different environments.
+- Need to ignore large files such as node_modules and sensitive files such as .env file into .gitignore file.
+- I need to manage serviceId of orders in more detail. Currently I have considered simpler way.
+- I need use separate test database for test cases. Initially in this implementation I have used the same database
+- I need to apply pagination in getAll query, Also I can apply search order and services by keyword.
+
 # Here are the steps to setup the project:
 Brief instructions on how to setup the environment to run your project:
 
 # Step:1 
         -Run 'npm install' or npm i 
-         (Will install all the packages includig node_modules file which earlier we placed  in .gitignore file.)
+        install all the dependencies.
 # Step:2
-Create '.env' file and set 'DB_USER' and 'DB_PASSWORD'
+Create '.env' file and set 'db_username' and 'db_password'.
+ (In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.)
+
+# Step : 3 
 Run 'npm run start'
+
+Help you to start your server.
+
+# Security Measures:
+- Used Sequelize ORM: To improve database security by avoiding the possibility of
+  SQL Injection Attacks.
+
+# Thunder Client Collection: 
 Import 'WIN HOME INSPECTION.postman_collection.json' file (which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses
 Run 'npm run test' to run the test cases
 What parts of the spec were completed, how much time you spent, and any particular problems you ran into
 
 I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
 
-# Security Measures:
-- Used Sequelize ORM: To improve database security by avoiding the possibility of
-  SQL Injection Attacks.
