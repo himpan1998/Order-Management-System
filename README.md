@@ -80,5 +80,5 @@ What parts of the spec were completed, how much time you spent, and any particul
 I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
 
 # Security Measures:
-- <Used Sequelize ORM/>: To improve database security by avoiding the possibility of
+- Used Sequelize ORM: To improve database security by avoiding the possibility of
   SQL Injection Attacks.
