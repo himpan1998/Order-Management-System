@@ -10,7 +10,7 @@ const serviceControllers = require("../Controllers/serviceControllers");
 router.get("/order", orderControllers.getAllOrders);
 router.get("/order/:id", orderControllers.getOrdersById);
 router.get("/service", serviceControllers.getAllServices);
-router.get("/service/:id", serviceControllers.getAllServices);
+router.get("/service/:id", serviceControllers.getServicesById);
 
 /**
  *  POST API:
