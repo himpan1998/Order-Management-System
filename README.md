@@ -1,8 +1,9 @@
+# Task:Order-Manangement-System 
 # Submitted By: Himanshu Pandey.
-# Task: Order-Manangement-System 
+# Date: 2023-10-17
 
 # Description
-Our database contais three main entities or tables as follows: 
+Our database contains three main entities such as: 
 - tbl_order_masters: This table has mainly contains field 'totalFee'.
 - tbl_service_masters: This table has mainly contains field 'name'.
 - tbl_order_service_mappings: This table has  mainly contains filed 'orderId' & 'serviceId'.
@@ -17,17 +18,17 @@ Our database contais three main entities or tables as follows:
 - I have used NodeJs  as a Server Enviroment with ExpressJs as a Framework to create APIs. Have used Relational Database:MySQL as a database to manage the data of orders and services.
 
 # Language Used:
-  - javaScript.
+  - JavaScript.
 # FromeWork Used:
    - Express.js.
 # DataBase Used:
-  - MySQL (R.D.B.M.S).
+  - MySQL 
 # ORM Used:
   - Sequelize.
 # Schema Validator Used:
-  - Ajv Validator.
+  - Ajv JSON schema validator.
 
-# API End-Points:
+#  HTTP METHODS With API End-Point :
 Below are the HTTP Methods,API endpoints with short description:
 
 # GET:
@@ -50,7 +51,7 @@ Below are the HTTP Methods,API endpoints with short description:
 
 
 # What trade-offs you made
-As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more managable with it.
+- As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more managable with it.
 
 # Any assumptions you made that affected your solution:
 - When you delete any service, all the order attached with that service will also be deleted.
@@ -66,26 +67,28 @@ As a database I have chosen relational database(MySQL) as the order and service 
 - I need to apply pagination in getAll query, Also I can apply search order and services by keyword.
 
 # Here are the steps to setup the project:
-Brief instructions on how to setup the environment to run your project:
+- Brief instructions on how to setup the environment to run your project:
 
 # Step:1 
-        -Run 'npm install' or npm i 
-        install all the dependencies.
+ -Run 'npm install' or npm i 
+ (Install all the dependencies.)
 # Step:2
-Create '.env' file and set 'db_username' and 'db_password'.
+- Create '.env' file and set 'db_username' and 'db_password'.
+
  (In my case I have stored it in config.json file as I am in development enviroment but if you are implemented it in Production you must have to encrypt it first into .env file & do not push the file using .gitignore.)
 
 # Step : 3 
-Run 'npm run start'
-
-Help you to start your server.
+- Run 'npm run start'
+(Help you to start your server).
 
 # Security Measures:
 - Used Sequelize ORM: To improve database security by avoiding the possibility of
   SQL Injection Attacks.
 
-# Thunder Client Collection: 
-Import 'WIN HOME INSPECTION.postman_collection.json' file (which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses
+# Thunder Client Collection For API TESTING:
+- Import 'thunder-collection_order-management.json' file 
+
+(which is available in this main folder) to your postman to get the documentation of all the endpoints with sample success and error responses
 Run 'npm run test' to run the test cases
 What parts of the spec were completed, how much time you spent, and any particular problems you ran into
 
