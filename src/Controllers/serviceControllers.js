@@ -1,7 +1,6 @@
-const Ajv = require("ajv");
-const ajv = new Ajv();
 const db = require("../models/index");
 const serviceValidator = require("./validators/validate");
+const {validateInputs}=require('../helper/shareMethods')
 const services = db.tbl_service_masters;
 
 /**
@@ -74,17 +73,19 @@ const createService = async (req, res) => {
     const insertData = {
       name: req.body?.name,
     };
-    const validate = ajv.compile(serviceValidator.serviceSchema);
-    const valid = validate(insertData);
-    if (!valid) {
+
+    // Input Schema Validation:
+    const isValid= validateInputs(serviceValidator.serviceSchema,inputData);
+    if (isValid.status==400) {
       return res.status(400).json({
-        message: validate.error,
+        message: isValid.errors,
       });
     }
+    // Create New Service:
     const createService = await services.create(insertData);
     return res.status(200).json({
       message: "Service Created Successfully !!",
-      result: createService,
+      Created: createService,
     });
   } catch (error) {
     res.status(500).json({
@@ -95,7 +96,7 @@ const createService = async (req, res) => {
 
 /**
  * Update Service
- * @author Himanshu Pandeys
+ * @author Himanshu Pandey
  * @param {*} req
  * @param {*} res
  */
@@ -109,17 +110,20 @@ const updateService = async (req, res) => {
       },
     });
     if (!isServiceExist) {
-      res.status(400).json({
+      res.status(200).json({
         message: "Service Record Not Found !!",
+        Service:[]
       });
     }
-    const validate = ajv.compile(serviceValidator.serviceSchema);
-    const valid = validate(updateData);
-    if (!valid) {
+    // Input Schema Validation:
+    const isValid= validateInputs(serviceValidator.serviceSchema,updateData);
+    if (isValid.status==400) {
       return res.status(400).json({
-        message: validate.error,
+        message: isValid.errors,
       });
     }
+
+    // Update Existing Service Records:
     const updateRecords = await services.update({
       where: {
         id: serviceId,
@@ -146,14 +150,23 @@ const updateService = async (req, res) => {
  */
 const deleteServiceById = async (req, res) => {
   try {
-    // const serviceId = req.params.id;
+    const serviceId = req.params.id;
+    const isServiceExist=await services.findOne({
+      where: {
+        id: serviceId
+      },
+    })
+    if(isServiceExist){
+       await isServiceExist.destroy();
+
+    }
     const removeService = await services.destory({
       where: {
-        id: req.params.id,
+        id: serviceId
       },
     });
     res.status(200).json({
-      message:"Records deleted Sucessfully !!",
+      message:" Service Records Deleted Successfully !!",
       result: removeService,
     });
   } catch (error) {
