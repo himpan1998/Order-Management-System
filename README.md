@@ -60,12 +60,18 @@ Below are the HTTP Methods,API endpoints with short description:
 - DELETE: /order/:id     - To delete order by id
 - DELETE: /service/:id   - To delete service by id
 
+# HTTP STATUS CODE:
+ - I have used following HTTP Status Code for making API'S. 
+ - 200 - OK success,
+ - 201 -New Recourses Created,
+ - 400 -Bad Request/Validation Error,
+ - 500 -Internal Server Error.
 
-# What trade-offs you made:
+# Trade-offs Made:
 - As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more manageable with it. 
 - To store data related to service associated with orders have stored in another table called tbl_order_service_mappings.
 
-# Any assumptions you made that affected your solution:
+# Assumptions Made:
 - When you delete any order,all the service attached with that order will also be deleted(Soft delete).Order will be  deleted from 'tbl_order_masters' & 
  the order associated with service will be delete from 'tbl_order_service_mappings'.
 
@@ -73,10 +79,10 @@ Below are the HTTP Methods,API endpoints with short description:
 
 - I have used Ajv validators for Schema Validation thus when client sent request from
   req.body or whatever the datatype should be same as mentioned in input schema validator.
-  
+
 -otherwise it show validation error. i.e datatype sent by client should be same as schema Validator. It will avoid several security breaches.
 
-# Made Changes for Production:  
+# Changes for Production:  
 - For production,need to encrypt sensitive data such as database configurations more precisely,encrypt 'config.json' file & stored it into '.env' file.
 - I also need to create separate env files  configuration for different environments.
 - Need to ignore large files such as node_modules and sensitive files such as .env file into .gitignore file.
@@ -84,12 +90,13 @@ Below are the HTTP Methods,API endpoints with short description:
 - I need use separate test database for test cases. Initially in this implementation I have used the same database
 - I need to apply pagination in getAll query, Also I can apply search order and services by keyword.
 
-# Here are the steps to setup the project:
-- Brief instructions on how to setup the environment to run your project:
+# Environment Setup:
+- Here are the steps too setup the  project:
 
 # Step:1 
 - Run 'npm install' or npm i 
 - To Install all the dependencies.
+
 # Step:2
 - Create '.env' file and set 'db_username' and 'db_password'.
 
@@ -110,9 +117,10 @@ Below are the HTTP Methods,API endpoints with short description:
 # Thunder Client Collection:
 -  I have used Thunder Client as API Testing Tool in Development Environment.
 - Thunder Client is a extension available in VsCode Editor for API Testing.
-# For API TESTING:
+
+# API TESTING:
 - I have imported 'thunder-collection_order-management.json' file in API Testing Folder. You can refer this file for Api testing purpose.
 
-# Time Spent To Complete The Task:
+# Task Completion Time:
 - I have included almost all the requirements mentioned. It took 3.5 hours to implement all features including testing.
 
