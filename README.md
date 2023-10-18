@@ -39,7 +39,7 @@
 # Schema Validator Used:
 - Ajv JSON schema validator.
   
-#  HTTP METHODS With API End-Point :
+#  API End-Point :
 Below are the HTTP Methods,API endpoints with short description:
 
 # GET:
