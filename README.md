@@ -62,7 +62,8 @@ Below are the HTTP Methods,API endpoints with short description:
 
 
 # What trade-offs you made:
-- As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more manageable with it. To store data related to service associated with orders have stored in another table called tbl_order_service_mappings.
+- As a database I have chosen relational database(MySQL) as the order and service has fix schema and their relationship can be more manageable with it. 
+- To store data related to service associated with orders have stored in another table called tbl_order_service_mappings.
 
 # Any assumptions you made that affected your solution:
 - When you delete any order,all the service attached with that order will also be deleted(Soft delete).Order will be  deleted from 'tbl_order_masters' & 
@@ -71,7 +72,9 @@ Below are the HTTP Methods,API endpoints with short description:
 - Similarly, When you delete any service, all the order attached with that service will also be deleted(Soft Delete) from 'tbl_order-service_mappings' table.
 
 - I have used Ajv validators for Schema Validation thus when client sent request from
-  req.body or whatever the datatype should be same as mentioned in input schema validator otherwise it show validation error. i.e datatype sent by client should be same as schema Validator. It will avoid several security breaches.
+  req.body or whatever the datatype should be same as mentioned in input schema validator.
+  
+-otherwise it show validation error. i.e datatype sent by client should be same as schema Validator. It will avoid several security breaches.
 
 # Made Changes for Production:  
 - For production,need to encrypt sensitive data such as database configurations more precisely,encrypt 'config.json' file & stored it into '.env' file.
