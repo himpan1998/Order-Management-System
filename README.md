@@ -19,7 +19,7 @@
 - Update
 - Delete.
 - I have used NodeJs as a Server-Side Environment with ExpressJs as a Framework to create APIs.
-# API Constraints/Limitations:
+# API Constraints:
 - Service Should return error on creation/updating an order within 3 hrs of a pre-existing order.
 # Data Base Description:
  - Have used Relational Database:MySQL as a database to manage the data of orders and services.
