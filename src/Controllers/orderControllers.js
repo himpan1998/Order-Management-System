@@ -1,6 +1,6 @@
 const db = require("../models/index");
 const orderValidator = require("./validators/validate");
-const {validateInputs}=require('../helper/shareMethods')
+const {validateInputs}=require('../helper/shareMethods');
 const orders = db.tbl_order_masters;
 const services = db.tbl_service_masters;
 const orderService=db.tbl_order_service_mappings;
@@ -78,7 +78,6 @@ const getOrdersById = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       message: "Internal Server Error !!",
-      error: error
     });
   }
 };
@@ -108,16 +107,15 @@ const createOrders = async (req, res) => {
       Created: createOrder,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server Error !!",
-      error:error.message
     });
   }
 };
 
 /**
  * Update-Order API
- * @author Himanshu Pandeys
+ * @author Himanshu Pandey
  * @param {*} req
  * @param {*} res
  */
@@ -128,34 +126,30 @@ const updateOrders = async (req, res) => {
     const updateBody = {
       totalFee: req.body?.totalFee,
     };
-    console.log("updateBody",updateBody)
     const isOrderExist = await orders.findOne({
-      attributes: ["id", ["createdAt", "datetime"], "totalFee"],
+      attributes: ["id", "createdAt","totalFee"],
       where: {
         id: orderId,
       },
     });
-     console.log("FindOne:",isOrderExist.createdAt)
     if (!isOrderExist) {
       return res.status(200).json({
         message: "No Order Found !! ",
         Orders:[]
       });
-    } else {
+    } 
       const createdTime = isOrderExist?.createdAt;
-      const createdTimeMs = createdTime.gettime();
+      const createdTimeMs = createdTime.getTime();
       const currentDate = new Date();
       const currentTimeMs = currentDate.getTime();
       const timeDiff = currentTimeMs - createdTimeMs;
-      console.log("timeDiff:",timeDiff)
       if (timeDiff < 108000000) {
-        return res.status(400).json({
-          message: "Order is not Updated",
+        return res.status(200).json({
+          message: "Order will not Updated",
         });
       }
-    }
+      // InputSchema Validation:
     const isValid= validateInputs(orderValidator.orderSchema,updateBody);
-    console.log("isValid",isValid);
     if (isValid.status==400) {
       return res.status(400).json({
         message: isValid.error,
@@ -169,10 +163,10 @@ const updateOrders = async (req, res) => {
     });
     return res.status(200).json({
       message: "Order Updated Successfully!!",
-      result: updateOrder,
+      updated: updateOrder,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server Error!!",
     });
   }
@@ -200,17 +194,16 @@ const deleteOrderById = async (req, res) => {
         }
       });
       return res.status(200).json({
-        message:'Order Deleted Successfully'
+        message:'Order Record Deleted Successfully'
       })
     }
-    res.status(200).json({
+    return res.status(200).json({
       message:'No Record Found !',
-      Orders:[]
+      OrderRecords:[]
     })
   } catch (error) {
-     res.statua(500).json({
+    return res.status(500).json({
       message:'Internal Server!!',
-      error:error.message
      })
   }
 };
