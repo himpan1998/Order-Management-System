@@ -11,6 +11,7 @@ router.get("/order", orderControllers.getAllOrders);
 router.get("/order/:id", orderControllers.getOrdersById);
 router.get("/service", serviceControllers.getAllServices);
 router.get("/service/:id", serviceControllers.getServicesById);
+router.get("/filter-order", orderControllers.filterOrders);
 
 /**
  *  POST API:
@@ -32,4 +33,4 @@ router.put("/service/:id", serviceControllers.updateService);
 router.delete("/order/:id", orderControllers.deleteOrderById);
 router.delete("/service/:id", serviceControllers.deleteServiceById);
 
-module.exports=router;
+module.exports = router;

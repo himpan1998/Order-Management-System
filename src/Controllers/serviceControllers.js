@@ -21,7 +21,7 @@ const getAllServices = async (req, res) => {
         ServiceRecords: serviceLists,
       });
     }
-    return res.status(400).json({
+    return res.status(204).json({
       message: "No service records found !!",
     });
   } catch (error) {
@@ -48,8 +48,9 @@ const getServicesById = async (req, res) => {
       },
     });
     if (!isServiceExist) {
-      return res.status(400).json({
+      return res.status(200).json({
         message: "No service records found !!",
+        ServiceRecords: [],
       });
     }
     return res.status(200).json({
@@ -109,7 +110,7 @@ const updateService = async (req, res) => {
       },
     });
     if (!isServiceExist) {
-      res.status(400).json({
+      res.status(204).json({
         message: "Service Record Not Found !!",
       });
     }
@@ -153,7 +154,7 @@ const deleteServiceById = async (req, res) => {
       },
     });
     res.status(200).json({
-      message:"Records deleted Sucessfully !!",
+      message: "Records deleted Sucessfully !!",
       result: removeService,
     });
   } catch (error) {
@@ -162,7 +163,7 @@ const deleteServiceById = async (req, res) => {
     });
   }
 };
-
+//  aaaa
 const serviceControllers = {
   getAllServices,
   getServicesById,
