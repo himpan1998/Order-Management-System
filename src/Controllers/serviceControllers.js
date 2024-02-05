@@ -1,9 +1,8 @@
-const Ajv = require("ajv");
-const ajv = new Ajv();
 const db = require("../models/index");
 const serviceValidator = require("./validators/validate");
+const {validateInputs}=require('../helper/shareMethods');
 const services = db.tbl_service_masters;
-
+const orderService=db.tbl_order_service_mappings;
 /**
  * Get All Services:
  * @author Himanshu Pandey
@@ -25,9 +24,8 @@ const getAllServices = async (req, res) => {
       message: "No service records found !!",
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server error !",
-      error: error,
     });
   }
 };
@@ -58,9 +56,8 @@ const getServicesById = async (req, res) => {
       ServiceRecords: isServiceExist,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server error !",
-      error: error,
     });
   }
 };
@@ -75,20 +72,22 @@ const createService = async (req, res) => {
     const insertData = {
       name: req.body?.name,
     };
-    const validate = ajv.compile(serviceValidator.serviceSchema);
-    const valid = validate(insertData);
-    if (!valid) {
+
+    // Input Schema Validation:
+    const isValid= validateInputs(serviceValidator.serviceSchema,insertData);
+    if (isValid.status==400) {
       return res.status(400).json({
-        message: validate.error,
+        message: isValid.error,
       });
     }
+    // Create New Service:
     const createService = await services.create(insertData);
     return res.status(200).json({
       message: "Service Created Successfully !!",
-      result: createService,
+      Created: createService,
     });
   } catch (error) {
-    res.status(500).json({
+   return res.status(500).json({
       message: "Internal Server Error !!",
     });
   }
@@ -96,45 +95,48 @@ const createService = async (req, res) => {
 
 /**
  * Update Service
- * @author Himanshu Pandeys
+ * @author Himanshu Pandey
  * @param {*} req
  * @param {*} res
  */
 const updateService = async (req, res) => {
   try {
     const serviceId = req.params.id;
-    const updateData = req.body?.name;
+    const updateData = {
+      name:req.body?.name
+    };
     const isServiceExist = await services.findOne({
       where: {
         id: serviceId,
       },
     });
     if (!isServiceExist) {
-      res.status(204).json({
+      res.status(400).json({
         message: "Service Record Not Found !!",
+        Service:[]
       });
     }
-    const validate = ajv.compile(serviceValidator.serviceSchema);
-    const valid = validate(updateData);
-    if (!valid) {
+    // Input Schema Validation:
+    const isValid= validateInputs(serviceValidator.serviceSchema,updateData);
+    if (isValid.status==400) {
       return res.status(400).json({
-        message: validate.error,
+        message: isValid.error,
       });
     }
-    const updateRecords = await services.update({
+
+    // Update Existing Service Records:
+    const updateRecords = await services.update(updateData,{
       where: {
         id: serviceId,
-      },
-      updateData,
+      }
     });
     return res.status(200).json({
-      message: "Service Record Update Successfully !!",
-      result: updateRecords,
+      message: "Service Record Update Successfully",
+      updated: updateRecords,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server Error !!",
-      error: error,
     });
   }
 };
@@ -147,18 +149,18 @@ const updateService = async (req, res) => {
  */
 const deleteServiceById = async (req, res) => {
   try {
-    // const serviceId = req.params.id;
-    const removeService = await services.destory({
+    const serviceId = req.params.id;
+    const isServiceExist=await services.findOne({
       where: {
         id: req.params.id,
       },
     });
     res.status(200).json({
-      message: "Records deleted Sucessfully !!",
+      message:"Records deleted Sucessfully !!",
       result: removeService,
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal Server Error !!",
     });
   }
